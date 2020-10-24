@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<h2 align='center'>เรื่องราวที่น่าสนใจ</h2>
+
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'mysite/images/cartoon1.jpg' %}" class="d-block w-100" alt="200px">
+    </div>
+    <div class="carousel-item">
+      <img src="cartoon1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="cartoon1.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    {% for post in posts %}
+    <div class="card-body">
+      <h5 class="card-title">{{post.name}}</h5>
+      <p class="card-text">{{post.desc}}</p>
+      <a href="#" class="btn btn-primary">อ่านเลย</a>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
