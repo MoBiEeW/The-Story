@@ -16,12 +16,12 @@ def home(request) :
     return render(request,'homepage.html',{'posts':data})
 
 def addUser(request) :
-    username=request.GET['username']
-    firstname=request.GET['firstname']
-    lastname=request.GET['lastname']
-    email=request.GET['email']
-    password=request.GET['password']
-    repassword=request.GET['repassword']
+    username=request.POST['username']
+    firstname=request.POST['firstname']
+    lastname=request.POST['lastname']
+    email=request.POST['email']
+    password=request.POST['password']
+    repassword=request.POST['repassword']
 
     if password==repassword :
         if User.objects.filter(username=username).exists():
