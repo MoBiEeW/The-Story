@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<br>
+<h2 align="center">ตัวละคร</h2>
+
+<form action="/savestory/" method="GET">
+
+  <div class="form-group">
+    <label for="">ชื่อเรื่อง</label>
+    <input type="text" class="form-control" name='title'>
+    <div class="form-group">
+      <label for="">ชื่อตัวละครที่หนึ่ง</label>
+      <input type="text" class="form-control" name='namechat1'>
+    </div>
+    <div class="form-group">
+      <label for="">ชื่อตัวละครที่สอง</label>
+      <input type="text" class="form-control" name='namechat2'>
+    </div>
+    <br>
+    <h2 align="center">เนื้อเรื่อง</h2>
+  </div>
+
+  <div class="form-group">
+    <label for="">บทความของตัวละครที่หนึ่ง</label>
+    <input type="text" class="form-control" name='text1'>
+  </div>
+  <div class="form-group">
+    <label for="">บทความของตัวละครที่สอง</label>
+    <input type="text" class="form-control" name='text2'>
+  </div>
+
+
+  <input type="submit" value="บันทึก" class="btn btn-primary">
+
+
+
+</form>
+
+
+{% endblock %}

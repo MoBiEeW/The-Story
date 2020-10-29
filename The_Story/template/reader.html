@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% for s in new_text %}
+<div>
+  <p class="card-title">{{s}}</p>
+</div>
+{%endfor%}
+
+{% endblock %}
