@@ -14,8 +14,7 @@
 <b>{{message}}</b>
 
 
-<form action="/login" method='get'>
-    
+<form action="/login/" method='POST'>{% csrf_token %}
     <div class="form-group">
             <label for="">Username</label>
             <input type="text" class="form-control" name='username'>

@@ -28,14 +28,14 @@
 
 
 <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    {% for post in posts %}
-    <div class="card-body">
-      <h5 class="card-title">{{post.name}}</h5>
-      <p class="card-text">{{post.desc}}</p>
-      <a href="#" class="btn btn-primary">อ่านเลย</a>
-    </div>
-    {% endfor %}
+  <img src="cartoon1.jpg" class="card-img-top" alt="...">
+  {% for post in posts %}
+  <div class="card-body">
+    <h5 class="card-title">{{post.name}}</h5>
+    <p class="card-text">{{post.desc}}</p>
+    <a href="#" class="btn btn-primary">อ่านเลย</a>
   </div>
+  {% endfor %}
+</div>
 
 {% endblock %}
