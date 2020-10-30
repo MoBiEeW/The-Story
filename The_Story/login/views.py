@@ -26,6 +26,12 @@ def home(request):
     return render(request, 'homepage.html', {'posts': namestory})
 
 
+def search(request):
+    search = request.GET['search']
+    story = Story.objects.all
+    return render(request, 'search.html', {'key': search, 'posts': story})
+
+
 def readpage(request, id):
     # story = Story.objects.all()
     # result = Story.objects.values()
@@ -57,9 +63,14 @@ def readpage(request, id):
     for i in range(2, len(new_text), 4):
         rightchat.append(new_text[i])
         rightchat.append(new_text[i+1])
-    print(len(leftchat))
+    print(story)
 
     return render(request, 'reader.html', {'new_text': new_text, 'leftchat': leftchat, 'rightchat': rightchat})
+
+
+def catergorypage(request, key):
+    story = Story.objects.all()
+    return render(request, 'catergory.html', {'posts': story, 'key': key})
 
 
 def addUser(request):
