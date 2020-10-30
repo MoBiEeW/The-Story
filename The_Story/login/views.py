@@ -16,35 +16,50 @@ def loginForm(request):
 
 
 def home(request):
-    data = Post.objects.all()
-    story = Story.objects.all()
-    result = Story.objects.values()
-    list_result = [x for x in result]
-    text1 = list_result[0]['text1'].split(',')
-    text2 = list_result[0]['text2'].split(',')
+    namestory = Story.objects.all()
+    # id = Story.objects.values()
+    # list_id = [x for x in id]
+    # ID = list_id[]['id']
+    for n in namestory:
+        print(n.id)
+    print(namestory[1].id)
+    return render(request, 'homepage.html', {'posts': namestory})
+
+
+def readpage(request, id):
+    # story = Story.objects.all()
+    # result = Story.objects.values()
+    # print(namestory[1].id)
+    # list_result = [x for x in result]
+    # text1 = list_result[3]['text1'].split(',')
+    # text2 = list_result[3]['text2'].split(',')
+    # new_text = []
+    # print(result)
+    # for i in range(len(text1)):
+    #     new_text.append(text1[i])
+    #     new_text.append(text2[i])
+    # obj = Story.objects.get(id=1)
+    # id = request.GET['id']
+    story = Story.objects.get(id=id)
+    text1 = story.text1.split(',')
+    text2 = story.text2.split(',')
     new_text = []
-    print(list_result)
-    print(text1, text2)
     for i in range(len(text1)):
+        new_text.append(story.namechat1)
         new_text.append(text1[i])
+        new_text.append(story.namechat2)
         new_text.append(text2[i])
-    return render(request, 'homepage.html', {'posts': data, 'story': story, 'text1': text1, 'text2': text2, 'num': len(text1), 'looptimes': range(2), 'new_text': new_text})
+    leftchat = []
+    rightchat = []
+    for i in range(0, len(new_text), 4):
+        leftchat.append(new_text[i])
+        leftchat.append(new_text[i+1])
+    for i in range(2, len(new_text), 4):
+        rightchat.append(new_text[i])
+        rightchat.append(new_text[i+1])
+    print(len(leftchat))
 
-    # return render(request, 'homepage.html', {'posts': data})
-
-
-def readpage(request):
-    story = Story.objects.all()
-    result = Story.objects.values()
-    list_result = [x for x in result]
-    text1 = list_result[0]['text1'].split(',')
-    text2 = list_result[0]['text2'].split(',')
-    new_text = []
-    for i in range(len(text1)):
-        new_text.append(text1[i])
-        new_text.append(text2[i])
-
-    return render(request, 'reader.html', {'new_text': new_text})
+    return render(request, 'reader.html', {'new_text': new_text, 'leftchat': leftchat, 'rightchat': rightchat})
 
 
 def addUser(request):
@@ -87,16 +102,21 @@ def savestory(request):
     textcharacter2 = request.GET['text2']
     charactername1 = request.GET['namechat1']
     charactername2 = request.GET['namechat2']
+    desc = request.GET['desc']
+    if request.method == 'GET':
+        catergory = request.GET.getlist('vehicle1')
+    catergory = ','.join(catergory)
+    # cat = request.GET['vehicle1']
     username = request.user.username
-    print(title, textcharacter1, textcharacter2,
-          charactername1, charactername2)
     obj = Story(
         title=title,
         text1=textcharacter1,
         text2=textcharacter2,
         namechat1=charactername1,
         namechat2=charactername2,
-        user=username
+        user=username,
+        desc=desc,
+        catergory=catergory
     )
     obj.save()
     return redirect('/home')
