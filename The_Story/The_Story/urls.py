@@ -26,5 +26,5 @@ urlpatterns = [
     path('logout/', views.logout),
     path('addstory/', views.addstoryform),
     path('savestory/', views.savestory),
-    path('readstory/', views.readpage),
+    path('readstory/<int:id>/', views.readpage),
 ]

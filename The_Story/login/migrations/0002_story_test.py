@@ -13,19 +13,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Story',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('namechat1', models.TextField()),
                 ('namechat2', models.TextField()),
                 ('title', models.TextField()),
                 ('text1', models.TextField()),
                 ('text2', models.TextField()),
                 ('user', models.TextField()),
+                ('desc', models.TextField()),
+                ('catergory', models.TextField()),
             ],
         ),
         migrations.CreateModel(
             name='Test',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.TextField()),
             ],
         ),
